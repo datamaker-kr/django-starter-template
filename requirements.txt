@@ -1,0 +1,7 @@
+Django
+django-bootstrap4
+django-ckeditor
+django-cleanup
+djangorestframework
+easy-thumbnails
+fabric

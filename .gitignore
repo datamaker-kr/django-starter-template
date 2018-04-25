@@ -1,0 +1,15 @@
+.venv
+
+.DS_Store
+*.pyc
+.idea
+*.iml
+
+/resources/
+*.sqlite3
+
+/static/css/**/*.css
+!/static/css/style.css
+!/static/css/admin/**/*.css
+
+settings/dev_*.py
