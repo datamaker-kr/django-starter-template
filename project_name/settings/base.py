@@ -114,3 +114,8 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "resources/media")
+
+# Ckeditor
+# https://github.com/django-ckeditor/django-ckeditor
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
