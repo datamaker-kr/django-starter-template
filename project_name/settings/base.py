@@ -18,7 +18,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'django_cleanup',
-    '{{ project_name }}'
+    'apps.account'
 ]
 
 MIDDLEWARE = [
