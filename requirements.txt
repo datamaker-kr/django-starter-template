@@ -2,6 +2,9 @@ Django
 django-bootstrap4
 django-ckeditor
 django-cleanup
+django-cors-headers
+django-filter
 djangorestframework
 easy-thumbnails
-fabric
+fabric3
+psycopg2-binary
