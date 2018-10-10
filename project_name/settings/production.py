@@ -12,8 +12,15 @@ DEBUG = False
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
+        'HOST': 'localhost',
         'NAME': '{{ project_name }}',
-        'USER': 'postgres',
+        'USER': '{{ project_name }}',
+        'PASSWORD': '',
         'ATOMIC_REQUESTS': True
     }
 }
+
+
+# Security
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
