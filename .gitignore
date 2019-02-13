@@ -13,3 +13,4 @@
 !/static/css/admin/**/*.css
 
 settings/dev_*.py
+/fabfile_config.py
