@@ -5,6 +5,10 @@ GIT_USERNAME = ''
 GIT_PASSWORD = ''
 
 
-HOST = ''
-USER = ''
-PASSWORD = ''
+ROLEDEFS = {
+    'prod': ['<username>@<ip>'],
+}
+
+PASSWORDS = {
+    '<username>@<ip>:<port>': '<password>',
+}
