@@ -17,7 +17,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'ckeditor',
     'ckeditor_uploader',
-    'django_cleanup',
+    'django_cleanup.apps.CleanupConfig',
     'apps.account'
 ]
 
