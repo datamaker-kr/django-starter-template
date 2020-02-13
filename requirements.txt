@@ -4,6 +4,7 @@ django-ckeditor
 django-cleanup
 django-cors-headers
 django-filter
+django_select2
 djangorestframework
 easy-thumbnails
 fabric3

@@ -8,9 +8,6 @@
 /resources/
 *.sqlite3
 
-/static/css/**/*.css
-!/static/css/style.css
-!/static/css/admin/**/*.css
 
-settings/dev_*.py
+settings/settings_extra.py
 /fabfile_config.py
