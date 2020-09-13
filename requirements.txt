@@ -1,4 +1,4 @@
-Django==2.2.7
+Django==3.1.1
 django-bootstrap4
 django-ckeditor
 django-cleanup
