@@ -1,5 +1,5 @@
 Django==3.2.3
-django-bootstrap5
+django_bootstrap5
 django-ckeditor
 django-cleanup
 django-cors-headers
