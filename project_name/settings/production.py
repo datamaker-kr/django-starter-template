@@ -2,24 +2,7 @@ from .base import *
 
 ALLOWED_HOSTS = ['*']
 
-SECRET_KEY = 'secret'
-
 DEBUG = False
-
-
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'HOST': 'localhost',
-        'NAME': '{{ project_name }}',
-        'USER': '{{ project_name }}',
-        'PASSWORD': '',
-        'ATOMIC_REQUESTS': True
-    }
-}
 
 
 # Security

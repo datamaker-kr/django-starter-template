@@ -1,15 +1,27 @@
 import os
 
+import environ
 from pathlib import Path
+
+env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parents[2]
+
+
+# Take environment variables from .env file
+environ.Env.read_env(BASE_DIR / '.env')
+
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = env('SECRET_KEY')
 
 
 # Site ID
 
 SITE_ID = 1
+
 
 # Application definition
 
@@ -22,7 +34,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.humanize',
-    'bootstrap5',
     'ckeditor',
     'ckeditor_uploader',
     'django_cleanup.apps.CleanupConfig',
@@ -64,8 +75,18 @@ TEMPLATES = [
 WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
 
 
+# Database
+# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+
+DATABASES = {
+    'default': env.db()
+}
+
+DATABASES['default']['ATOMIC_REQUESTS'] = True
+
+
 # Password validation
-# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
+# https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -86,7 +107,7 @@ AUTH_USER_MODEL = 'account.User'
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/3.2/topics/i18n/
+# https://docs.djangoproject.com/en/4.0/topics/i18n/
 
 LANGUAGE_CODE = 'ko'
 
@@ -100,7 +121,7 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
+# https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
 
@@ -116,7 +137,7 @@ MEDIA_ROOT = BASE_DIR / 'resources/media'
 
 
 # Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
