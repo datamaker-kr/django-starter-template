@@ -1,15 +1,11 @@
-try:
-    from .settings_extra import IS_PRODUCTION
-    is_production = IS_PRODUCTION
-except ImportError:
-    is_production = False
+from .base import *
 
-if is_production:
-    from .production import *
-else:
+if env('ENVIRONMENT') == 'development':
     from .development import *
-
-try:
-    from .settings_extra import *
-except ImportError:
-    pass
+elif env('ENVIRONMENT') == 'production':
+    from .production import *
+elif env('ENVIRONMENT') == 'local':
+    try:
+        from .local import *
+    except ImportError:
+        pass

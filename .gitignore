@@ -9,7 +9,7 @@
 *.sqlite3
 
 
-settings/settings_extra.py
+settings/local.py
 /fabfile_config.py
 /http/
 .env
