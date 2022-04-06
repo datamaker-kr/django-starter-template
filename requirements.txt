@@ -1,4 +1,4 @@
-Django==4.0.1
+Django==4.0.3
 django-cleanup
 django-environ
 easy-thumbnails
