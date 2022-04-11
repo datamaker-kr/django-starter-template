@@ -1,6 +1,11 @@
 config = {
     'env_1': {
         'path_project': '/path/to/project',
+        'config': {
+            'sudo': {
+                'password': '<password>'
+            }
+        },
         'connection': {
             'host': '<user>@<host>:<port>',
             'connect_kwargs': {
@@ -10,6 +15,11 @@ config = {
     },
      'env_2': {
         'path_project': '/path/to/project',
+        'config': {
+            'sudo': {
+                'password': '<password>'
+            }
+        },
         'connection': {
             'host': '<user>@<host>:<port>',
             'connect_kwargs': {
