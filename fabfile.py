@@ -1,6 +1,6 @@
 from contextlib import contextmanager
 
-from fabric import Connection
+from fabric import Connection, Config
 from fabric.tasks import task
 
 from fabfile_config import config
@@ -10,6 +10,10 @@ class Fabric:
 
     def __init__(self, env, fast=False):
         self.config = config[env]
+        self.gunicorn_service = self.config.get('gunicorn_service', 'gunicorn.socket')
+        connection_config = self.config['connection'].get('config')
+        if connection_config:
+            self.config['connection']['config'] = Config(overrides=self.config['connection']['config'])
         self.connection = Connection(**self.config['connection'])
         self.fast = fast
 
@@ -33,16 +37,11 @@ class Fabric:
             self.connection.run(f'./manage.py {param}')
 
     def restart_service(self, service):
-        self.connection.run(f'systemctl restart {service}')
+        self.connection.sudo(f'systemctl restart {service}')
 
     def restart_gunicorn(self):
         print('Restarting gunicorn: ')
-        if self.fast:
-            # https://stackoverflow.com/a/47115688
-            r = r's/.*Main PID: \(.*\)$/\1/g p'
-            self.connection.run(f"systemctl status gunicorn |  sed -n '{r}' | cut -f1 -d' ' | xargs kill -HUP")
-        else:
-            self.restart_service('gunicorn.socket')
+        self.restart_service(self.gunicorn_service)
 
     def deploy(self):
         self.pull()
@@ -50,7 +49,6 @@ class Fabric:
             self.install_requirements()
             self.manage('migrate')
             self.manage('collectstatic --noinput')
-            self.restart_service('nginx')
         self.restart_gunicorn()
 
 
@@ -58,9 +56,21 @@ class Fabric:
     'env': '배포환경 (예. dev, staging, prod)',
     'fast': '빠른 배포 진행 여부'
 })
-def deploy(c, env='staging', fast=False):
+def deploy(c, env='prod', fast=False):
     """
     서버 배포
     """
     fabric = Fabric(env, fast=fast)
     fabric.deploy()
+
+
+@task(help={
+    'management_command': 'manage.py "management_command"',
+    'env': '배포환경 (예. dev, staging, prod)'
+})
+def manage(c, management_command, env='prod'):
+    """
+    django management command 실행
+    """
+    fabric = Fabric(env)
+    fabric.manage(management_command)

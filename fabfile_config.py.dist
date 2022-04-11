@@ -1,13 +1,14 @@
 config = {
     'env_1': {
         'path_project': '/path/to/project',
-        'config': {
-            'sudo': {
-                'password': '<password>'
-            }
-        },
+        'gunicorn_service': 'gunicorn.socket',
         'connection': {
             'host': '<user>@<host>:<port>',
+            'config': {
+                'sudo': {
+                    'password': '<password>'
+                }
+            },
             'connect_kwargs': {
                 'key_filename': '/path/to/.pem/file'
             }
@@ -15,13 +16,14 @@ config = {
     },
      'env_2': {
         'path_project': '/path/to/project',
-        'config': {
-            'sudo': {
-                'password': '<password>'
-            }
-        },
+        'gunicorn_service': 'gunicorn.socket',
         'connection': {
             'host': '<user>@<host>:<port>',
+            'config': {
+                'sudo': {
+                    'password': '<password>'
+                }
+            },
             'connect_kwargs': {
                 'key_filename': '/path/to/.pem/file'
             }
