@@ -1,7 +1,6 @@
 import os
 import uuid
 
-from django.db.models import Q
 from django.utils.deconstruct import deconstructible
 
 
@@ -20,20 +19,11 @@ class UUIDUploader(object):
         base_path = self.base_path.format(instance=instance, filename=filename)
 
         splits = filename.split('.')
-        if len(splits) > 1:
-            ext = splits[-1].lower()
-        else:
-            ext = self.ext
+        ext = splits[-1].lower() if len(splits) > 1 else self.ext
 
-        if ext:
-            filename = f'{uuid.uuid4()}.{ext}'
-        else:
-            filename = f'{uuid.uuid4()}'
+        filename = f'{uuid.uuid4()}.{ext}' if ext else f'{uuid.uuid4()}'
 
-        if self.shard:
-            paths = self.get_sharded_paths(filename)
-        else:
-            paths = [filename]
+        paths = self.get_sharded_paths(filename) if self.shard else [filename]
         return os.path.join(base_path, *paths)
 
     def __eq__(self, other):
@@ -44,9 +34,9 @@ class UUIDUploader(object):
         depth = self.shard[1]
 
         for i in range(depth):
-            yield string[(width * i):(width * (i + 1))]
+            yield string[(width * i) : (width * (i + 1))]
 
         if rest_only:
-            yield string[(width * depth):]
+            yield string[(width * depth) :]
         else:
             yield string

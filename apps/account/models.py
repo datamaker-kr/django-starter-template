@@ -5,13 +5,11 @@ from django.utils.translation import gettext_lazy as _
 
 
 class UserQuerySet(models.QuerySet):
-
     def active(self):
         return self.filter(is_active=True)
 
 
 class UserManager(BaseUserManager):
-
     def create(self, **kwargs):
         password = kwargs.pop('password', None)
         user = self.model(**kwargs)
@@ -23,20 +21,13 @@ class UserManager(BaseUserManager):
         if not email:
             raise ValueError('Users must have an email address')
         email = self.normalize_email(email)
-        data = {
-            'email': email,
-            'password': password
-        }
+        data = {'email': email, 'password': password}
         data.update(kwargs)
         user = self.create(**data)
         return user
 
     def create_superuser(self, email, password, **kwargs):
-        user = self.create_user(
-            email,
-            password=password,
-            **kwargs
-        )
+        user = self.create_user(email, password=password, **kwargs)
         user.is_superuser = True
         user.is_staff = True
         user.save(using=self._db)
