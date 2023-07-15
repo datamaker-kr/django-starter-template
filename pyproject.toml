@@ -1,0 +1,14 @@
+[tool.ruff]
+select = ['F', 'E', 'W', 'I', 'D', 'N', 'DJ', 'ISC', 'ICN', 'G', 'INP', 'PIE', 'T20', 'Q', 'RSE', 'SIM', 'INT', 'RUF']
+ignore = ['D100', 'D101', 'D102', 'D103', 'D104', 'D105', 'D106', 'D107', 'DJ008']
+
+[tool.ruff.pydocstyle]
+convention = 'google'
+
+[tool.ruff.flake8-quotes]
+inline-quotes = 'single'
+
+[tool.black]
+target-version = ['py311']
+skip-string-normalization = true
+preview = true
