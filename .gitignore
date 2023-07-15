@@ -10,7 +10,6 @@
 
 
 **/settings/local.py
-/fabfile_config.py
 /http/
 .env
 **/management/commands/run_anything*.py
