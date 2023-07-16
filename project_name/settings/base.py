@@ -91,15 +91,9 @@ AUTH_PASSWORD_VALIDATORS = [
             'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'
         ),
     },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
 AUTH_USER_MODEL = 'account.User'
@@ -128,7 +122,7 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = BASE_DIR / 'resources/media'
+MEDIA_ROOT = env('MEDIA_ROOT')
 
 
 # Default primary key field type
