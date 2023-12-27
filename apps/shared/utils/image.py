@@ -14,8 +14,6 @@ def get_cropped_thumbnail(image, width=300, height=300, box=None, crop=True):
 
 def get_cropped_thumbnail_url(image, width=300, height=300, box=None, crop=True):
     try:
-        return get_cropped_thumbnail(
-            image, width=width, height=height, box=box, crop=crop
-        ).url
+        return get_cropped_thumbnail(image, width=width, height=height, box=box, crop=crop).url
     except Exception:
         return ''

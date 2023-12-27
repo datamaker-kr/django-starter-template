@@ -1,5 +1,5 @@
-Django==4.2.3
+django==5.0
 django-cleanup
 django-environ
 easy-thumbnails
-psycopg2-binary
+psycopg[binary]
