@@ -2,6 +2,8 @@ from pathlib import Path
 
 import environ
 
+from apps.shared.utils.storage import get_storages
+
 env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -106,19 +108,19 @@ USE_I18N = True
 
 USE_TZ = True
 
+# Storages for Static and Media Files
+# https://docs.djangoproject.com/en/5.0/ref/settings/#std-setting-STORAGES
+
+STORAGES = get_storages(env)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = BASE_DIR / 'resources/static'
-
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
 MEDIA_URL = '/media/'
-
-MEDIA_ROOT = env('MEDIA_ROOT')
 
 
 # Default primary key field type
