@@ -1,8 +1,10 @@
 [tool.ruff]
+line-length = 120
+extend-exclude = ['migrations']
+
+[tool.ruff.lint]
 select = ['F', 'W', 'E', 'I', 'D', 'N', 'DJ', 'ISC', 'ICN', 'G', 'INP', 'PIE', 'T20', 'Q', 'RSE', 'SIM', 'INT']
 ignore = ['W191', 'E111', 'E114', 'E117', 'D100', 'D101', 'D102', 'D103', 'D104', 'D105', 'D106', 'D107', 'D206', 'D300', 'Q000', 'Q001', 'Q002', 'Q003', 'COM812', 'COM819', 'DJ008', 'ISC001', 'ISC002']
-extend-exclude = ['migrations']
-line-length = 120
 
 [tool.ruff.format]
 exclude = ['migrations']
